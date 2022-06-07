@@ -12,6 +12,46 @@
     <header>
       <h1>Ticket Booking App With VueJS</h1>
     </header>
+
+    <main>
+      <div id="app">
+        <h1 class="app-title">Ticket Booking App</h1>
+        <div class="ticket-app">
+          <div class="ticket-app-top">
+            <div class="seat-states">
+              <div class="seat-state" v-for="(value, key) in seatStates">
+                <div
+                  class="seat-state-color"
+                  :style="{backgroundColor: value.color}"
+                ></div>
+                <div class="seat-state-text">{{ value.text }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="ticket-app-bottom">
+            <div class="ticket-app-left">
+              <div class="bus">
+                <div class="bus-top">
+                  <div class="bus-door">Door</div>
+                  <div class="bus-driver">Driver</div>
+                </div>
+                <div class="seats">
+                  <div
+                    class="seat"
+                    :class="{'seat--sold': seat.type === 'sold','seat--booked': seat.type === 'booked','seat--selected': seat.type === 'selected'}"
+                    v-for="(seat, i) in seats"
+                    :key="seat.name"
+                  >
+                    {{seat.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ticket-app-right"></div>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="/ticket.js"></script>
   </body>
 </html>
